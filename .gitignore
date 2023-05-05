@@ -4,3 +4,7 @@ obj/*
 obj
 bin/*
 bin
+lib
+lib/*
+build
+build/*

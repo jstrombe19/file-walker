@@ -1,5 +1,7 @@
 CC=gcc
-CFLAGS=-g -Wall -std=gnu17
+LDLIBS=-lssl -lcrypto
+CFLAGS=-g -Wall -std=gnu17 -I/usr/include/openssl
+LDFLAGS=$(LDLIBS)
 SRC=src
 OBJ=obj
 SRCS=$(wildcard $(SRC)/*.c)
@@ -11,7 +13,7 @@ DATA=processed sample
 all: $(EXE) $(SERVER_EXE)
 
 $(EXE): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $@ -lm 
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ -lm $(OBJS)
 
 $(OBJ)/%.o: $(SRC)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@

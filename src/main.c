@@ -19,6 +19,7 @@
 #define CORE_PACKET_SIZE 44
 #define MAX_CHUNKS 30
 
+bool verbose;
 
 void strip_packet_header(struct chunk_alloc *chunks) {
     int number_of_packets = 0;
@@ -100,6 +101,7 @@ void print_buffer_content(uint8_t *buffer, int buffer_size) {
 }
 
 int main() {
+    verbose = true;
     char filename[] = "sample";
     int length = 512;
     bool ret = true;
